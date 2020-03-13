@@ -85,13 +85,30 @@ add_executable(HW2
         HW2/SecondTriangle.shader
         HW2/SimpleTransform.vertexshader
         )
-set_target_properties(HW2 PROPERTIES XCODE_ATTRIBUTE_CONFIGURATION_BUILD_DIR "${CMAKE_CURRENT_SOURCE_DIR}/HW2/")
 target_link_libraries(HW2
         ${ALL_LIBS}
         )
 # Xcode and Visual working directories
 set_target_properties(HW2 PROPERTIES XCODE_ATTRIBUTE_CONFIGURATION_BUILD_DIR "${CMAKE_CURRENT_SOURCE_DIR}/HW2/")
 create_target_launcher(HW2 WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/HW2/") # Visual
+
+
+# Tutorial 4
+add_executable(HW3
+        HW3/main.cpp
+        common/shader.cpp
+        common/shader.hpp
+
+        HW3/TransformVertexShader.vertexshader
+        HW3/ColorFragmentShader.fragmentshader
+        )
+target_link_libraries(HW3
+        ${ALL_LIBS}
+        )
+# Xcode and Visual working directories
+set_target_properties(HW3 PROPERTIES XCODE_ATTRIBUTE_CONFIGURATION_BUILD_DIR "${CMAKE_CURRENT_SOURCE_DIR}/HW3/")
+create_target_launcher(HW3 WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/HW3/")
+
 
 
 
@@ -107,6 +124,10 @@ if (NOT ${CMAKE_GENERATOR} MATCHES "Xcode" )
     add_custom_command(
             TARGET HW2 POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_CFG_INTDIR}/HW2${CMAKE_EXECUTABLE_SUFFIX}" "${CMAKE_CURRENT_SOURCE_DIR}/HW2/"
+    )
+    add_custom_command(
+            TARGET HW3 POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_CFG_INTDIR}/HW3${CMAKE_EXECUTABLE_SUFFIX}" "${CMAKE_CURRENT_SOURCE_DIR}/HW3/"
     )
 
 elseif (${CMAKE_GENERATOR} MATCHES "Xcode" )
