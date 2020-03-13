@@ -85,7 +85,7 @@ add_executable(HW2
         HW2/SecondTriangle.shader
         HW2/SimpleTransform.vertexshader
         )
-#set_target_properties(HW2 PROPERTIES RUNTIME_OUTPUT_DIRECTORY /test1)
+set_target_properties(HW2 PROPERTIES XCODE_ATTRIBUTE_CONFIGURATION_BUILD_DIR "${CMAKE_CURRENT_SOURCE_DIR}/HW2/")
 target_link_libraries(HW2
         ${ALL_LIBS}
         )
