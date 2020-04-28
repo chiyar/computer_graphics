@@ -1,0 +1,5 @@
+cmake-build-debug
+.idea
+distrib
+external
+*.DS_Store
